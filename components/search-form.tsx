@@ -481,44 +481,6 @@ export default function SearchForm({
               )}
             </div>
 
-            {extractedText && extractedText.text && (
-              <div className="max-w-md mx-auto">
-                <div className="bg-muted p-3 rounded-md text-left">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm font-medium flex items-center gap-1">
-                      <FileText className="h-4 w-4" />
-                      Detected Text
-                    </h3>
-                    <Badge
-                      variant={
-                        extractedText.confidence > 0.7 ? "default" : "outline"
-                      }
-                      className="text-xs"
-                    >
-                      {Math.round(extractedText.confidence * 100)}% confidence
-                    </Badge>
-                  </div>
-                  <p className="text-sm whitespace-pre-wrap break-words max-h-20 overflow-y-auto">
-                    {extractedText.text || "No clear text detected"}
-                  </p>
-                  {extractedText?.words?.length > 0 && (
-                    <div className="mt-2 flex flex-wrap gap-1">
-                      {extractedText.words.slice(0, 8).map((word, i) => (
-                        <Badge key={i} variant="outline" className="text-xs">
-                          {word.text}
-                        </Badge>
-                      ))}
-                      {extractedText.words.length > 8 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{extractedText.words.length - 8} more
-                        </Badge>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
             <div className="flex justify-center gap-4">
               <Button variant="outline" onClick={resetSearch}>
                 <RefreshCw className="h-4 w-4 mr-2" />
